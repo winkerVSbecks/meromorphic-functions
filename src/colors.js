@@ -17,14 +17,17 @@ const clrs = generateRandomColorRamp({
   maxSaturationLight: [1, 1],
 });
 
-const hsl = (c) => `hsl(${c[0]}, ${c[1] * 100}%, ${c[2] * 100}%)`;
-const colors = clrs.all
-  .map(hsl)
-  .map((c) => Color.parse(c).rgb.map((v) => v / 255));
+const hsl = (c) =>
+  Color.parse(`hsl(${c[0]}, ${c[1] * 100}%, ${c[2] * 100}%)`).hex;
+export const rawColors = clrs.all.map(hsl);
+
+const glslColors = rawColors.map((c) => Color.parse(c).rgb.map((v) => v / 255));
+
+export const toGlsl = (c) => Color.parse(c).rgb.map((v) => v / 255);
 
 export default [
-  Random.pick(colors),
-  Random.pick(colors),
-  Random.pick(colors),
-  Random.pick(colors),
+  Random.pick(rawColors),
+  Random.pick(rawColors),
+  Random.pick(rawColors),
+  Random.pick(rawColors),
 ];

@@ -13,13 +13,13 @@ export const settings = {
 
 export const sketch = ({ gl, width, height, settings }) => {
   const { args } = settings;
-  console.log(args);
 
   const animatePoint = (pt, playhead) =>
     lerpArray(pt[0], pt[1], Math.sin(playhead * Math.PI));
 
   // const [a0, a1, a2, a3, b0, b1, b2, b3] = flippedRandomOnCircle(); // randomOnCircle();
   const { a0, a1, a2, a3, b0, b1, b2, b3 } = settings.args;
+  const { color1, color2, color3, color4 } = settings.args;
 
   return createShader({
     clearColor: '#fff',
@@ -28,10 +28,10 @@ export const sketch = ({ gl, width, height, settings }) => {
     frag,
     uniforms: {
       u_resolution: [width, height],
-      u_col_1: colors[0],
-      u_col_2: colors[1],
-      u_col_3: colors[2],
-      u_col_4: colors[3],
+      u_col_1: color1,
+      u_col_2: color2,
+      u_col_3: color3,
+      u_col_4: color4,
 
       u_a0: ({ playhead }) => a0, // animatePoint(a0, playhead),
       u_a1: ({ playhead }) => a1, // animatePoint(a1, playhead),

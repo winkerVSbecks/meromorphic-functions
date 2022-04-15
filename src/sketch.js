@@ -28,6 +28,7 @@ export const sketch = ({ gl, width, height, settings }) => {
     frag,
     uniforms: {
       u_resolution: [width, height],
+      u_colorMode: settings.args.colorMode,
       u_col_1: color1,
       u_col_2: color2,
       u_col_3: color3,

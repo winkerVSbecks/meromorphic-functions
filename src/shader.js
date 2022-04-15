@@ -1,4 +1,4 @@
-import glsl from 'glslify';
+const glsl = require('glslify');
 
 export const vert = glsl(/* glsl */ `#version 300 es
   precision highp float;
@@ -28,6 +28,8 @@ export const frag = glsl(/* glsl */ `#version 300 es
   uniform vec2 u_b1;
   uniform vec2 u_b2;
   uniform vec2 u_b3;
+
+  uniform int u_colorMode;
 
   #define PI 3.1415926535897932384626433832795
 
@@ -59,8 +61,27 @@ export const frag = glsl(/* glsl */ `#version 300 es
     return ((atan(z.y, z.x) / PI) + 1.0) * 0.5;
   }
 
+  vec3 blend( in float t, in vec3 a, in vec3 b, in vec3 c, in vec3 d ) {
+    return mix(mix(a, b, t), mix(c, d, t), t);
+  }
+
+  vec3 soft( in float t, in vec3 a, in vec3 b, in vec3 c, in vec3 d ) {
+    return a*sin(2.*PI*(c*t)) + b*cos(2.*PI*(d*t));
+  }
+
+  vec3 tangent( in float t, in vec3 a, in vec3 b, in vec3 c, in vec3 d ) {
+    return a + b*tan(2.*PI*(c*t+d));
+  }
+
+  vec3 ntsc( in float t, in vec3 a, in vec3 b, in vec3 c, in vec3 d ) {
+    vec3 k1 = b * cos(2.* PI * (c * t + d));
+    vec3 k2 = b * sin(2.* PI * (c * t + d));
+    vec3 k3 = b * tan(2.* PI * (c * t + d));
+    return a + vec3(k1.x, k2.y, k3.z);
+  }
+
   vec3 pal( in float t, in vec3 a, in vec3 b, in vec3 c, in vec3 d ) {
-    return a + b*cos(2.*PI*(c*t+d));
+    return mix(a, b, t);
   }
 
   void main() {
@@ -86,6 +107,16 @@ export const frag = glsl(/* glsl */ `#version 300 es
       float imaginary = cx_log(result).y;
       float col = (imaginary / PI);
 
-      fragColor = vec4(pal(col, u_col_1, u_col_2, u_col_3, u_col_4),1.0);
+      if (u_colorMode == 0) {
+        fragColor = vec4(pal(col, u_col_1, u_col_2, u_col_3, u_col_4),1.0);
+      } else if (u_colorMode == 1) {
+        fragColor = vec4(blend(col, u_col_1, u_col_2, u_col_3, u_col_4),1.0);
+      } else if (u_colorMode == 2) {
+        fragColor = vec4(ntsc(col, u_col_1, u_col_2, u_col_3, u_col_4),1.0);
+      } else if (u_colorMode == 3) {
+        fragColor = vec4(soft(col, u_col_1, u_col_2, u_col_3, u_col_4),1.0);
+      } else if (u_colorMode == 4) {
+        fragColor = vec4(tangent(col, u_col_1, u_col_2, u_col_3, u_col_4),1.0);
+      }
   }
 `);

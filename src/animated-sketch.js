@@ -5,6 +5,8 @@ import circle from './animations/circle';
 import lissajous from './animations/lissajous';
 import noise from './animations/noise';
 import randomOnCircle from './animations/random-on-circle';
+import cubic from './animations/cubic';
+import polynomial from './animations/polynomial';
 
 const animations = {
   flippedRandomOnCircle,
@@ -12,6 +14,8 @@ const animations = {
   lissajous,
   noise,
   randomOnCircle,
+  cubic,
+  polynomial,
 };
 
 export const settings = {

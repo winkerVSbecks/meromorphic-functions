@@ -15,6 +15,8 @@ export default {
         'circle',
         'lissajous',
         'noise',
+        'cubic',
+        'polynomial',
       ],
       control: {
         type: 'select',
@@ -201,7 +203,9 @@ export const Static = (args) => {
   return `
   <div>
     <canvas id="sketch"></canvas>
-    <p style="margin-bottom: 0;">Press <kbd><kbd class="key">cmd</kbd> + <kbd class="key">s</kbd></kbd> to export save the image</p>
+    <p style="margin-bottom: 0;">
+      <kbd><kbd class="key">cmd</kbd> + <kbd class="key">s</kbd></kbd> to export the image
+    </p>
   </div>`;
 };
 Static.args = {
@@ -265,7 +269,12 @@ export const Animated = (args) => {
   return `
   <div>
     <canvas id="sketch"></canvas>
-    <p style="margin-bottom: 0;">Press <kbd><kbd class="key">cmd</kbd> + <kbd class="key">s</kbd></kbd> to export save the image</p>
+    <p style="margin-bottom: 0;">
+      <kbd><kbd class="key">cmd</kbd> + <kbd class="key">s</kbd></kbd> to export the image
+    </p>
+    <p style="margin-bottom: 0;">
+      <kbd><kbd class="key">cmd</kbd> + <kbd class="key">shift</kbd> + <kbd class="key">s</kbd></kbd> to export image sequence of the animation
+    </p>
   </div>`;
 };
 Animated.args = {

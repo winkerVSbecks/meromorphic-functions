@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "storybook": "start-storybook -p 6006",
+    "storybook": " NODE_OPTIONS=--openssl-legacy-provider start-storybook -p 6006",
     "build-storybook": "build-storybook",
     "chromatic": "npx chromatic --project-token=afdd4bf67193"
   },
@@ -24,6 +24,7 @@
     "canvas-sketch": "^0.7.5",
     "canvas-sketch-util": "^1.10.0",
     "fettepalette": "^3.1.0",
-    "glslify": "^7.1.1"
+    "glslify": "^7.1.1",
+    "ml-regression-polynomial": "^2.2.0"
   }
 }

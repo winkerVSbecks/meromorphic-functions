@@ -1,2 +1,4 @@
 node_modules
 renders
+build-storybook.log
+storybook-static

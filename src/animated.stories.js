@@ -7,26 +7,12 @@ export default {
   title: 'Generator',
   argTypes: {
     width: {
-      control: {
-        type: 'range',
-        min: 0,
-        max: 2048,
-        step: 1,
-      },
-      table: {
-        category: 'Dimensions',
-      },
+      control: { type: 'number' },
+      table: { category: 'Dimensions' },
     },
     height: {
-      control: {
-        type: 'range',
-        min: 0,
-        max: 2048,
-        step: 1,
-      },
-      table: {
-        category: 'Dimensions',
-      },
+      control: { type: 'number' },
+      table: { category: 'Dimensions' },
     },
     animationType: {
       options: [

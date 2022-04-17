@@ -6,7 +6,7 @@ import { sketch as animatedSketch } from './animated-sketch';
 import colors, { rawColors, toGlsl } from './colors';
 
 export default {
-  title: 'Sketches/Meromorphic Functions',
+  title: 'MeromorphicFunctions',
   argTypes: {
     animationType: {
       options: [
@@ -209,7 +209,7 @@ export const Static = (args) => {
   </div>`;
 };
 Static.args = {
-  colorMode: 0,
+  colorMode: 3,
   color1: colors[0],
   color2: colors[1],
   color3: colors[2],
@@ -257,7 +257,7 @@ export const Animated = (args) => {
           color2: toGlsl(args.color2),
           color3: toGlsl(args.color3),
           color4: toGlsl(args.color4),
-          colorMode: args.colorMode,
+          colorMode: args.colorMode || 3,
           animationType: args.animationType,
         },
       }).then((m) => {

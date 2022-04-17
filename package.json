@@ -25,6 +25,8 @@
     "canvas-sketch-util": "^1.10.0",
     "fettepalette": "^3.1.0",
     "glslify": "^7.1.1",
-    "ml-regression-polynomial": "^2.2.0"
+    "mdx-embed": "^1.0.0",
+    "ml-regression-polynomial": "^2.2.0",
+    "storybook-addon-mdx-embed": "^1.0.0"
   }
 }

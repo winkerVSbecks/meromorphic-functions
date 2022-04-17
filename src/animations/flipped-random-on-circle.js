@@ -4,7 +4,7 @@ const Random = require('canvas-sketch-util/random');
 const animatePoint = (pt, playhead) =>
   lerpArray(pt[0], pt[1], Math.sin(playhead * Math.PI));
 
-const [a0, a1, a2, a3, b0, b1, b2, b3] = flippedRandomOnCircle(); // randomOnCircle();
+const [a0, a1, a2, a3, b0, b1, b2, b3] = flippedRandomOnCircle();
 
 export default {
   u_a0: ({ playhead }) => animatePoint(a0, playhead),

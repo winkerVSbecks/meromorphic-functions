@@ -5,6 +5,7 @@ module.exports = {
     '@storybook/addon-essentials',
     'storybook-addon-mdx-embed',
   ],
+  staticDirs: ['../static'],
   framework: '@storybook/html',
   features: {
     postcss: false,

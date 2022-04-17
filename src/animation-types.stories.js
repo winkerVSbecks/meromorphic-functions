@@ -5,49 +5,55 @@ import { sketch, settings } from './animated-sketch';
 import colors, { rawColors, toGlsl } from './colors';
 
 export default {
-  title: 'MotionTypes',
+  title: 'AnimationTypes',
   argTypes: {
+    width: {
+      control: {
+        type: 'range',
+        min: 0,
+        max: 2048,
+        step: 1,
+      },
+      table: {
+        category: 'Dimensions',
+      },
+    },
+    height: {
+      control: {
+        type: 'range',
+        min: 0,
+        max: 2048,
+        step: 1,
+      },
+      table: {
+        category: 'Dimensions',
+      },
+    },
     colorMode: {
       options: [0, 1, 2, 3, 4],
       control: {
         type: 'select',
         labels: { 0: 'pal', 1: 'blend', 2: 'ntsc', 3: 'soft', 4: 'tangent' },
       },
-      // table: { category: 'Colors' },
+      table: { category: 'Colors' },
     },
     color1: {
       control: { type: 'color', presetColors: rawColors },
-      // table: { category: 'Colors' },
+      table: { category: 'Colors' },
     },
     color2: {
       control: { type: 'color', presetColors: rawColors },
-      // table: { category: 'Colors' },
+      table: { category: 'Colors' },
     },
     color3: {
       control: { type: 'color', presetColors: rawColors },
-      // table: { category: 'Colors' },
+      table: { category: 'Colors' },
     },
     color4: {
       control: { type: 'color', presetColors: rawColors },
-      // table: { category: 'Colors' },
+      table: { category: 'Colors' },
     },
     animationType: { control: false, table: { disable: true } },
-    a0x: { control: false, table: { disable: true } },
-    a0y: { control: false, table: { disable: true } },
-    a1x: { control: false, table: { disable: true } },
-    a1y: { control: false, table: { disable: true } },
-    a2x: { control: false, table: { disable: true } },
-    a2y: { control: false, table: { disable: true } },
-    a3x: { control: false, table: { disable: true } },
-    a3y: { control: false, table: { disable: true } },
-    b0x: { control: false, table: { disable: true } },
-    b0y: { control: false, table: { disable: true } },
-    b1x: { control: false, table: { disable: true } },
-    b1y: { control: false, table: { disable: true } },
-    b2x: { control: false, table: { disable: true } },
-    b2y: { control: false, table: { disable: true } },
-    b3x: { control: false, table: { disable: true } },
-    b3y: { control: false, table: { disable: true } },
   },
 };
 
@@ -64,6 +70,7 @@ const AnimatedTemplate = (args) => {
     if (args.animationType) {
       canvasSketch(sketch, {
         ...settings,
+        dimensions: [args.width, args.height],
         canvas,
         args: {
           a0: [args.a0x, args.a0y],
@@ -100,28 +107,14 @@ const AnimatedTemplate = (args) => {
 };
 
 const AnimatedArgs = {
+  width: 1080,
+  height: 1080,
   animationType: 'flippedRandomOnCircle',
   colorMode: 0,
   color1: colors[0],
   color2: colors[1],
   color3: colors[2],
   color4: colors[3],
-  a0x: Random.range(-5, 5),
-  a0y: Random.range(-5, 5),
-  a1x: Random.range(-5, 5),
-  a1y: Random.range(-5, 5),
-  a2x: Random.range(-5, 5),
-  a2y: Random.range(-5, 5),
-  a3x: Random.range(-5, 5),
-  a3y: Random.range(-5, 5),
-  b0x: Random.range(-5, 5),
-  b0y: Random.range(-5, 5),
-  b1x: Random.range(-5, 5),
-  b1y: Random.range(-5, 5),
-  b2x: Random.range(-5, 5),
-  b2y: Random.range(-5, 5),
-  b3x: Random.range(-5, 5),
-  b3y: Random.range(-5, 5),
 };
 
 export const FlippedRandomOnCircle = AnimatedTemplate.bind();

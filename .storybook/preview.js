@@ -5,11 +5,10 @@ export const parameters = {
       color: /(background|color)$/i,
       date: /Date$/,
     },
-    expanded: true,
   },
   options: {
     storySort: {
-      order: ['Introduction', 'MeromorphicFunctions', 'MotionTypes'],
+      order: ['Introduction', 'Generator', 'AnimationTypes'],
     },
   },
 };

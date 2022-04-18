@@ -96,7 +96,7 @@ const AnimatedArgs = {
   width: 1080,
   height: 1080,
   animationType: 'flippedRandomOnCircle',
-  colorMode: 0,
+  colorMode: 2,
   color1: colors[0],
   color2: colors[1],
   color3: colors[2],
@@ -118,24 +118,28 @@ Circle.args = {
 export const RandomOnCircle = AnimatedTemplate.bind();
 RandomOnCircle.args = {
   ...AnimatedArgs,
+  colorMode: 4,
   animationType: 'randomOnCircle',
 };
 
 export const Lissajous = AnimatedTemplate.bind();
 Lissajous.args = {
   ...AnimatedArgs,
+  colorMode: 0,
   animationType: 'lissajous',
 };
 
 export const Noise = AnimatedTemplate.bind();
 Noise.args = {
   ...AnimatedArgs,
+  colorMode: 3,
   animationType: 'noise',
 };
 
 export const Cubic = AnimatedTemplate.bind();
 Cubic.args = {
   ...AnimatedArgs,
+  colorMode: 2,
   animationType: 'cubic',
 };
 
